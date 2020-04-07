@@ -5,9 +5,11 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import Center from "../components/Center";
 
+import {AuthParamList} from '../components/AuthParamList'
+
 interface RoutesProps {}
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<AuthParamList>();
 
 const Routes: React.FC<RoutesProps> = ({}) => {
   return (
