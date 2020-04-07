@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, StackNavigationProp } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
 import Center from "../components/Center";
@@ -31,15 +31,15 @@ const Routes: React.FC<RoutesProps> = ({}) => {
 export default Routes;
 
 // -> when there is a screen, there is navigation can be passed in
-const Login = (props: any) => {
-  const { navigation } = props;
+const Login = ({navigation}: {navigation: StackNavigationProp<AuthParamList, 'Login'>}) => {
+  
   return (
     <Center>
       <Text>I am a login screen</Text>
       <Button
         title="go to register"
         onPress={() => {
-          navigation.navigate("Register");
+          navigation.navigate('Register')
         }}
       >
         go to register
@@ -48,15 +48,15 @@ const Login = (props: any) => {
   );
 };
 
-const Register = (props: any) => {
-  const { navigation } = props;
+const Register = ({navigation}: {navigation: StackNavigationProp<AuthParamList, 'Register'>}) => {
+  
   return (
     <Center>
       <Text>Register page</Text>
       <Button
         title="go to register"
         onPress={() => {
-          navigation.navigate("Login");
+          navigation.navigate('Login')
         }}
       >
         go to log in
