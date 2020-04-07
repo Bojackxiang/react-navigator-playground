@@ -12,6 +12,7 @@ import Center from "../components/Center";
 import { AuthParamList, AuthNavProps } from "../components/AuthParamList";
 import { AuthContext } from "../components/AuthProvider";
 import AppTabs from "../components/AppTabs";
+import AuthStack from "../components/AuthStack";
 
 interface RoutesProps {}
 
@@ -55,57 +56,10 @@ const Routes: React.FC<RoutesProps> = ({}) => {
           // !! here, what we import is another navigator, there are many pages, be careful
         <AppTabs/>
       ) : (
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen
-            options={{ headerTitle: "Login Page" }}
-            name="Login"
-            component={Login}
-          />
-          <Stack.Screen
-            options={{ headerTitle: "Register Page" }}
-            name="Register"
-            component={Register}
-          />
-        </Stack.Navigator>
+        <AuthStack/>  
       )}
     </NavigationContainer>
   );
 };
 
 export default Routes;
-
-// -> when there is a screen, there is navigation can be passed in
-const Login = ({ navigation, route }: AuthNavProps<"Login">) => {
-    const userContext = React.useContext(AuthContext)
-  return (
-    <Center>
-      <Text>I am a login screen</Text>
-      <Button title="login now" onPress = {() => {userContext.login()}}/>
-      <Button
-        title="No Account ? go to register"
-        onPress={() => {
-          navigation.navigate("Register");
-        }}
-      />
-      <Text>
-        Route name is {route.name} {route.key}
-      </Text>
-    </Center>
-  );
-};
-
-const Register = ({ navigation }: AuthNavProps<"Register">) => {
-  return (
-    <Center>
-      <Text>Register page</Text>
-      <Button
-        title="go to register"
-        onPress={() => {
-          navigation.navigate("Login");
-        }}
-      >
-        go to log in
-      </Button>
-    </Center>
-  );
-};
