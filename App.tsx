@@ -1,7 +1,6 @@
-import Routes from "./src/Routes/Routes";
+import Providers from './src/components/AuthProviders'
 
-export default Routes;
-
+export default Providers;
 
 /**
  * navigation.navigate("name")
