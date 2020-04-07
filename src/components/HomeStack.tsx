@@ -36,16 +36,46 @@ const HomeStack: React.FC<HomeStackProps> = ({}) => {
         component={Product}
         options={({ route }) => ({ headerTitle: route.params.name })}
       />
+      <Stack.Screen
+        name="Edit"
+        component={EditPage}
+        options={({ route }) => ({
+          headerTitle: "editing",
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => {
+                console.log("object");
+              }}
+            >
+              <Text>Done</Text>
+            </TouchableOpacity>
+          ),
+        })}
+      />
     </Stack.Navigator>
   );
 };
 
 export default HomeStack;
 
-const Product = ({ route }: HomeNavProps<"Product">) => {
+const EditPage = ({ navigation, route }: HomeNavProps<"Edit">) => {
+  return (
+    <Center>
+      <Text>Edit screen - {route.params.name}</Text>
+    </Center>
+  );
+};
+
+const Product = ({ navigation, route }: HomeNavProps<"Product">) => {
   return (
     <Center>
       <Text>product - {route.params.name}</Text>
+      <Button
+        title="edit"
+        onPress={() => {
+          navigation.navigate("Edit", { name: route.params.name });
+        }}
+      />
     </Center>
   );
 };

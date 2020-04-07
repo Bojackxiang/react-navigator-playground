@@ -16,4 +16,8 @@ export default Providers;
  * 
  * 
  * !! 只有stack的时候，才回头头上的标题
+ * 
+ * !! 只要是平级的navigator就能相互跳
+ * 
+ * !!重点： navigator 中的button 和 screen中的button之间的交流
  */
