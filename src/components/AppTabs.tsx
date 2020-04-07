@@ -4,7 +4,8 @@ import { Button, Text } from "react-native";
 import { AppParamList } from "../components/AppParams";
 import Center from "./Center";
 import { AuthContext } from "./AuthProvider";
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import HomeStack from "./HomeStack";
 
 interface AppTabsProps {}
 
@@ -19,15 +20,13 @@ const AppTabs: React.FC<AppTabsProps> = ({}) => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === "Home") {
-            iconName = focused
-              ? "ios-information-circle"
-              : "ios-information-circle-outline";
+            iconName = 'home'
           } else if (route.name === "Search") {
-            iconName = focused ? "ios-list-box" : "ios-list";
+            iconName = 'search1'
           }
 
           // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <AntDesign name={iconName} size={size} color={color} />;
         },
       })}
       tabBarOptions={{
@@ -35,7 +34,7 @@ const AppTabs: React.FC<AppTabsProps> = ({}) => {
         inactiveTintColor: "gray",
       }}
     >
-      <Tabs.Screen name="Home" component={Home} />
+      <Tabs.Screen name="Home" component={HomeStack} />
       <Tabs.Screen name="Search" component={Search} />
     </Tabs.Navigator>
   );
