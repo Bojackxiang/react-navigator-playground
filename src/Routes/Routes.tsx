@@ -11,6 +11,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import Center from "../components/Center";
 import { AuthParamList, AuthNavProps } from "../components/AuthParamList";
 import { AuthContext } from "../components/AuthProvider";
+import AppTabs from "../components/AppTabs";
 
 interface RoutesProps {}
 
@@ -51,9 +52,7 @@ const Routes: React.FC<RoutesProps> = ({}) => {
     //   basic structure for router
     <NavigationContainer>
       {user ? (
-        <Center>
-          <Text>You already logined</Text>
-        </Center>
+        <AppTabs/>
       ) : (
         <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
