@@ -3,6 +3,8 @@ import { View, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
+import Center from '../components/Center'
+
 interface RoutesProps {}
 
 const Stack = createStackNavigator();
@@ -22,8 +24,8 @@ export default Routes;
 
 const Login = () => {
   return (
-    <View>
+    <Center>
       <Text>I am a login screen</Text>
-    </View>
+    </Center>
   );
 };
