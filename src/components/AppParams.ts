@@ -14,7 +14,8 @@ export type HomeStackList =  {
         name: string
     },
     Edit: {
-        name: string
+        name: string,
+        submit?:React.MutableRefObject<() => void>
     },
 }
 

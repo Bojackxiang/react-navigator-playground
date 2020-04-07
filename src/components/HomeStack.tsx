@@ -44,7 +44,9 @@ const HomeStack: React.FC<HomeStackProps> = ({}) => {
           headerRight: () => (
             <TouchableOpacity
               onPress={() => {
-                console.log("object");
+                if(route.params.submit){
+                    route.params.submit.current()
+                }
               }}
             >
               <Text>Done</Text>
@@ -58,7 +60,23 @@ const HomeStack: React.FC<HomeStackProps> = ({}) => {
 
 export default HomeStack;
 
+const apiCall = (x: any) => {
+    return x
+}
+
 const EditPage = ({ navigation, route }: HomeNavProps<"Edit">) => {
+    const [formState] = React.useState()
+    const submit = React.useRef(() => {})
+    
+    submit.current = () => {
+        apiCall(formState);
+        navigation.goBack();
+    }
+
+    React.useEffect(() => {
+        navigation.setParams({submit})
+    }, [])
+
   return (
     <Center>
       <Text>Edit screen - {route.params.name}</Text>
