@@ -52,6 +52,7 @@ const Routes: React.FC<RoutesProps> = ({}) => {
     //   basic structure for router
     <NavigationContainer>
       {user ? (
+          // !! here, what we import is another navigator, there are many pages, be careful
         <AppTabs/>
       ) : (
         <Stack.Navigator initialRouteName="Login">
