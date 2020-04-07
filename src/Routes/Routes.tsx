@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
-import Center from '../components/Center'
+import Center from "../components/Center";
 
 interface RoutesProps {}
 
@@ -11,10 +11,16 @@ const Stack = createStackNavigator();
 
 const Routes: React.FC<RoutesProps> = ({}) => {
   return (
-    //   basic structure for router 
+    //   basic structure for router
     <NavigationContainer>
-      <Stack.Navigator> 
-        <Stack.Screen name="login" component={Login} />
+      <Stack.Navigator
+        // screenOptions={{
+        //   header: () => null,
+        // }}
+        initialRouteName="Login"
+      >
+        <Stack.Screen options={{headerTitle: 'Login Page'}} name="Login" component={Login} />
+        <Stack.Screen options={{headerTitle: 'Register Page'}} name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -22,10 +28,37 @@ const Routes: React.FC<RoutesProps> = ({}) => {
 
 export default Routes;
 
-const Login = () => {
+// -> when there is a screen, there is navigation can be passed in
+const Login = (props: any) => {
+  const { navigation } = props;
   return (
     <Center>
       <Text>I am a login screen</Text>
+      <Button
+        title="go to register"
+        onPress={() => {
+          navigation.navigate("Register");
+        }}
+      >
+        go to register
+      </Button>
+    </Center>
+  );
+};
+
+const Register = (props: any) => {
+  const { navigation } = props;
+  return (
+    <Center>
+      <Text>Register page</Text>
+      <Button
+        title="go to register"
+        onPress={() => {
+          navigation.navigate("Login");
+        }}
+      >
+        go to log in
+      </Button>
     </Center>
   );
 };
