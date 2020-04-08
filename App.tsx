@@ -20,4 +20,6 @@ export default Providers;
  * !! 只要是平级的navigator就能相互跳
  * 
  * !!重点： navigator 中的button 和 screen中的button之间的交流
+ * 
+ * !! 如何在两个tab之间复用另一个页面
  */

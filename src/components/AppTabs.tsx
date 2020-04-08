@@ -6,6 +6,7 @@ import Center from "./Center";
 import { AuthContext } from "./AuthProvider";
 import { AntDesign } from '@expo/vector-icons';
 import HomeStack from "./HomeStack";
+import SearchStack from "./SearchStack";
 
 interface AppTabsProps {}
 
@@ -35,33 +36,11 @@ const AppTabs: React.FC<AppTabsProps> = ({}) => {
       }}
     >
       <Tabs.Screen name="Home" component={HomeStack} />
-      <Tabs.Screen name="Search" component={Search} />
+      <Tabs.Screen name="Search" component={SearchStack} />
     </Tabs.Navigator>
   );
 };
 
 export default AppTabs;
 
-const Home = () => {
-  const userContext = React.useContext(AuthContext);
-  return (
-    <Center>
-      <Text>Home</Text>
-      <Text>{userContext.user?.username}</Text>
-      <Button
-        title="logout"
-        onPress={() => {
-          userContext.logout();
-        }}
-      />
-    </Center>
-  );
-};
 
-const Search = () => {
-  return (
-    <Center>
-      <Text>Search</Text>
-    </Center>
-  );
-};
