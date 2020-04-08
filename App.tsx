@@ -1,13 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+
 
 export default function App() {
+  const screenScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.container} onScroll={screenScroll} scrollEventThrottle={6}>
+
+    </ScrollView>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
